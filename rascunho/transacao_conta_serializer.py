@@ -1,18 +1,11 @@
 from rest_framework import serializers
 from contas.models.conta import Conta
 from contas.models.transacao import Transacao
-from contas.validator.transacao_validator import valida_contas,valida_valor, valida_data
 
-class TransacaoSerializer(serializers.ModelSerializer):
+
+class TransacaoContaSerializer(serializers.ModelSerializer):
     
-    def validate(self, data):
-    
-        valida_contas(data.get('conta_origem'), data.get('conta_destino'))
-        valida_valor(data.get('conta_origem'), data.get('valor'))
-        valida_data(data.get('data_transacao'))
-        
-        return data
-    
+
     def create(self, validated_data):
         destino = Conta.objects.get(id=validated_data["conta_destino"])
         destino.saldo += validated_data["valor"]
