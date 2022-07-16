@@ -2,13 +2,13 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from contas.views.saldo_APIView import SaldoAPIView
-from contas.views.teste_viewset import TransacaoAPIView
+from rascunho.teste_viewset import TransacaoAPIView
 from contas.views.transacao_viewset import TransacaoViewset
 from contas.views.conta_viewset import ContaViewset
 
 
 router = routers.DefaultRouter()
-router.register(r'criarcontas', ContaViewset)
+router.register(r'criarconta', ContaViewset)
 router.register(r'criartransacao', TransacaoViewset)
 
 urlpatterns = [

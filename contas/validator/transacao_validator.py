@@ -7,11 +7,11 @@ def valida_contas(conta_origem, conta_destino):
     """Validacao das contas de origem e de destino"""
     
     try:
-        conta = Conta.objects.get(id=conta_origem)
+        Conta.objects.get(id=conta_origem)
     except:
         raise serializers.ValidationError({'conta_origem': 'Conta origem não existe'})
     try:
-        conta = Conta.objects.get(id=conta_destino)
+        Conta.objects.get(id=conta_destino)
     except:
         raise serializers.ValidationError({'conta_destino': 'Conta destino não existe'})
 

@@ -7,5 +7,3 @@ class ContaViewset(viewsets.ModelViewSet):
     serializer_class = ContaSerializer
     queryset = Conta.objects.all()
 
-
-
