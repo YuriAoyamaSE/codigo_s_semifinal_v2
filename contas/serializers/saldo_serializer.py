@@ -3,6 +3,8 @@ from contas.models.conta import Conta
 
 
 class SaldoSerializer(serializers.ModelSerializer):
+    """Serializer para saldo"""
+
     class Meta:
         model = Conta
-        fields = ['saldo']
+        fields = ["saldo"]

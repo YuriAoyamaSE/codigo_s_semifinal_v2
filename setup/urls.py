@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from contas.views.saldo_APIView import SaldoAPIView
-from rascunho.teste_viewset import TransacaoAPIView
+from contas.views.transacao_APIView import TransacaoAPIView
 from contas.views.transacao_viewset import TransacaoViewset
 from contas.views.conta_viewset import ContaViewset
 

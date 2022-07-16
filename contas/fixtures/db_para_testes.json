@@ -1,0 +1,116 @@
+[
+    {
+        "model": "contas.conta",
+        "pk": 1,
+        "fields":{
+            "cliente": "cliente dez",
+            "saldo": 10.00
+        }
+    },
+    {
+        "model": "contas.conta",
+        "pk": 2,
+        "fields":{
+            "cliente": "cliente cem",
+            "saldo": 100.00
+        }
+    },
+    {
+        "model": "contas.conta",
+        "pk": 3,
+        "fields":{
+            "cliente": "cliente mil",
+            "saldo": 1000.00
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 1,
+        "fields":{
+            "conta_origem": 1,
+            "conta_destino": 2,
+            "valor": 5,
+            "data_transacao": "2022-07-16"
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 2,
+        "fields":{
+            "conta_origem": 2,
+            "conta_destino": 3,
+            "valor": 15,
+            "data_transacao": "2022-07-11"
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 3,
+        "fields":{
+            "conta_origem": 1,
+            "conta_destino": 3,
+            "valor": 2,
+            "data_transacao": "2022-07-10"
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 4,
+        "fields":{
+            "conta_origem": 3,
+            "conta_destino": 1,
+            "valor": 200,
+            "data_transacao": "2022-07-12"
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 5,
+        "fields":{
+            "conta_origem": 3,
+            "conta_destino": 2,
+            "valor": 50,
+            "data_transacao": "2022-07-15"
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 6,
+        "fields":{
+            "conta_origem": 3,
+            "conta_destino": 2,
+            "valor": 15,
+            "data_transacao": "2022-07-16"
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 7,
+        "fields":{
+            "conta_origem": 2,
+            "conta_destino": 1,
+            "valor": 5,
+            "data_transacao": "2022-07-15"
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 8,
+        "fields":{
+            "conta_origem": 2,
+            "conta_destino": 1,
+            "valor": 10,
+            "data_transacao": "2022-07-14"
+        }
+    },
+    {
+        "model": "contas.transacao",
+        "pk": 9,
+        "fields":{
+            "conta_origem": 2,
+            "conta_destino": 3,
+            "valor": 10,
+            "data_transacao": "2022-07-16"
+        }
+    }
+]
