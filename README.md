@@ -80,7 +80,9 @@ Uma melhoria desejada era utilizar um campo de “Datetime”, para registrar os
 #### 5. Sobre os Views:
 Há quatro Views no sistema, com respectivos registros de routers e paths no urls.py do projeto:
 ![](arquivos_readme/urls.png)
+
 #####ContaViewset
+
 ![](arquivos_readme/view_conta.png)
 Um viewset simples com utilização do modelo Conta. Através do recurso na URL “criarconta”, é possível usar o GET para obter a lista de contas criadas e o POST para criar uma nova conta.
 #####TransacaoViewset
