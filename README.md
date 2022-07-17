@@ -134,6 +134,7 @@ Os testes foram separados em três arquivos, a maioria testando status code em r
 Ao todo foram criadas apenas 14 funções de testes e eles foram feitos posterior ao código fonte. A não utilização do TDD foi por motivos externos (pressa, falta de tempo, doença), que geraram dúvidas se seria possível terminar o projeto. Assim, houve um foco em criar o sistema e suas funcionalidades, deixando validações, tratamento de erros e testes para o final, se sobrasse tempo suficiente.
 Há um padrão nos arquivos de testes que é o uso de fixturing. Houve tanto o uso de um arquivo com dados para alimentar um Database de teste, contendo 3 contas e 9 transações, como a criação de um superuser e uma instância de APIClient para simular o consumo da API.
 ![](arquivos_readme/test_padrao.png)
+<br>
 O "db_para_testes" é um arquivo .json que trás os dados dos objetos mencionados. O primeiro teste serve justamente para checar se estes dados foram carregados no DB de teste.
 Estes dados simulados são muito úteis em certos testes, como, por exemplo, quando é necessário testar o filtro de transações (sem filtro; com filtro de conta; com filtro de conta, data inicial e final), como pode ser visto abaixo:
 ![](arquivos_readme/test_busca.png)
@@ -144,19 +145,27 @@ Para a demonstração das funcionalidades requeridas pelo desafio, será utiliza
 ![](arquivos_readme/postman_auto.png)
 <br>
 Para a demonstração, criou-se a conta de superuser abaixo, que será utilizada em todos os exemplos abaixo:
+
 ![](arquivos_readme/postman_criarconta.png)
+<br>
+
 ##### a) Criação de uma nova conta
 Para criar uma nova conta, fazemos o request com método POST para o host (local host, no teste acima), no recurso “/criarconta/”. Os dados enviados devem constar o nome do cliente e o saldo.
 ![](arquivos_readme/postman_criarconta2.png)
 <br>
 Parâmetros inválidos retornam exceções. Por exemplo, tentativa de cadastrar conta com saldo negativo:
+
 ![](arquivos_readme/postman_criarconta3.png)
+<br>
+
 ##### b) Consulta de todas as contas criadas
 A consulta de todas as contas criadas é feita no mesmo recurso de criação (“/criarconta/”), com uso do método GET.
 ![](arquivos_readme/postman_todascontas1.png)
 <br>
 Observar que houve configuração no framework para paginação de vinte objetos por página. Assim, se o total das contas ultrapassar, para acessar as outras páginas, deve ser enviado um parâmetro referente à página seguinte.
+
 ![](arquivos_readme/postman_todascontas2.png)
+<br>
 
 ##### c) Consulta de saldo de uma conta
 Para a consulta de saldo, basta usar o método GET no endpoint “conta/<id>/saldo/”, onde o id representa a conta a se obter o saldo. A princípio, foi experimentado retornar diretamente o valor. Porém, para manter um padrão nos dados, alterou-se para retornar na forma de dicionário.
@@ -170,5 +179,8 @@ A consulta das transferências ocorre pelo endpoint “conta/transacao/” atrav
 ![](arquivos_readme/postman_trans_all.png)
 <br>
 Há três parâmetros que podem ser usados como filtro: conta, data_inicial e data_final. Podem ser usados juntos ou isolados.
+
 ![](arquivos_readme/postman_trans_conta.png)
+<br>
+
 ![](arquivos_readme/postman_trans_contadata.png)
