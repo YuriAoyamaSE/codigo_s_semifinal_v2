@@ -139,3 +139,36 @@ Estes dados simulados são muito úteis em certos testes, como, por exemplo, qua
 ![](arquivos_readme/test_busca.png)
 
 #### 9. Usando as funcionalidades:
+
+Para a demonstração das funcionalidades requeridas pelo desafio, será utilizado a aplicação Postman. Lembrando que houve uso de autenticação básica (e permissão) para toda a API. Sem informar credenciais válidas, qualquer recurso irá retornar status code 401 (não autorizado).
+![](arquivos_readme/postman_auto.png)
+<br>
+Para a demonstração, criou-se a conta de superuser abaixo, que será utilizada em todos os exemplos abaixo:
+![](arquivos_readme/postman_criarconta.png)
+##### a) Criação de uma nova conta
+Para criar uma nova conta, fazemos o request com método POST para o host (local host, no teste acima), no recurso “/criarconta/”. Os dados enviados devem constar o nome do cliente e o saldo.
+![](arquivos_readme/postman_criarconta2.png)
+<br>
+Parâmetros inválidos retornam exceções. Por exemplo, tentativa de cadastrar conta com saldo negativo:
+![](arquivos_readme/postman_criarconta3.png)
+##### b) Consulta de todas as contas criadas
+A consulta de todas as contas criadas é feita no mesmo recurso de criação (“/criarconta/”), com uso do método GET.
+![](arquivos_readme/postman_todascontas1.png)
+<br>
+Observar que houve configuração no framework para paginação de vinte objetos por página. Assim, se o total das contas ultrapassar, para acessar as outras páginas, deve ser enviado um parâmetro referente à página seguinte.
+![](arquivos_readme/postman_todascontas2.png)
+
+##### c) Consulta de saldo de uma conta
+Para a consulta de saldo, basta usar o método GET no endpoint “conta/<id>/saldo/”, onde o id representa a conta a se obter o saldo. A princípio, foi experimentado retornar diretamente o valor. Porém, para manter um padrão nos dados, alterou-se para retornar na forma de dicionário.
+![](arquivos_readme/postman_saldo.png)
+
+##### d) Transferência de saldo entre contas
+Para usar o recurso de transferência entre contas, criamos uma nova transferência com o método POST no recurso “criartransacao”, enviando os dados necessários (conta_origem, conta_destino, valor, data_transacao).
+![](arquivos_readme/postman_criartransacao.png)
+##### e) Consulta das transferências de uma conta (recebidos e enviados), com a possibilidade de consultar em um dado período estipulado
+A consulta das transferências ocorre pelo endpoint “conta/transacao/” através do método GET. Ao utilizar sem qualquer parâmetro, irá retornar todas as transações no DB. 
+![](arquivos_readme/postman_trans_all.png)
+<br>
+Há três parâmetros que podem ser usados como filtro: conta, data_inicial e data_final. Podem ser usados juntos ou isolados.
+![](arquivos_readme/postman_trans_conta.png)
+![](arquivos_readme/postman_trans_contadata.png)
