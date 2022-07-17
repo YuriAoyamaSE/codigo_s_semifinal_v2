@@ -13,6 +13,7 @@ Criar uma API REST com sistema similar a um banco digital. Deve permitir:
   <li>Transferência de saldo entre contas</li>
   <li>Consulta das transferências de uma conta (recebidos e enviados), com possibilidadede consultar em um dado período estipulado</li>
 </ul>
+
 [Maiores detalhes](arquivos_readme/desafio.pdf)
 
 ## :space_invader: Modos de jogo
