@@ -74,6 +74,7 @@ Uma melhoria clara se houvesse maior tempo seria criar um modelo de cliente, com
 <li>data_transacao, que registra o momento da transferência.
 
 ![](arquivos_readme/model_transacao.png)
+<br>
 A data_transacao possui um valor padrão que identifica a data atual no momento do POST. Porém, ainda pode receber outros valores. Isto foi feito desta forma para poder simular transações em outros momentos.
 Uma melhoria desejada era utilizar um campo de “Datetime”, para registrar os horários da transação, não apenas o dia.
 
