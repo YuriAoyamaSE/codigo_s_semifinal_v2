@@ -113,27 +113,36 @@ Por exemplo, se quisermos as transações recebidas e enviadas pela conta de id 
 #### 6. Sobre os Serializers:
 
 Foram criados três serializers:
+
 ##### ContaSerializer
 ![](arquivos_readme/serial_conta.png)
+<br>
 Serializer simples aplicado para o view ContaViewset. Faz o tratamento de validação dos atributos do modelo.
+
 ##### SaldoSerializer
 ![](arquivos_readme/serial_saldo.png)
+<br>
 Serializer simples aplicado para o view SaldoAPIView. Não validações de atributos do modelo aqui, já que serva apenas para um GET simples de dados já gerados e validados em outros momentos.
 
 ##### TransacaoSerializer
 ![](arquivos_readme/serial_transacao.png)
+<br>
 Este serializer está sendo utilizado tanto para o view TransacaoViewset como para o TransacaoAPIView.
 Ele faz a validação dos atributos do modelo Transacao. Com dados validados, irá efetuar o registro da transação e fazer as alterações no Database, retirando o valor da transferência da conta origem e adicionando à conta destino.
 
 #### 7. Sobre os Validators:
 Os validators são apenas arquivos criados por organização, para desafogar o código dos serializers e gerando possibilidade de reuso do código com o crescimento futuro deste.
 Foram separados em dois arquivos, aglomerando funções utilizadas para fazer o tratamento dos dados da conta e dos dados da transação.
+
 ##### conta_validator.py
 ![](arquivos_readme/validator_conta.png)
+<br>
 Temos duas funções para validação de uma conta. A primeira é uma validação do cliente, ou seja, o nome. Basicamente checando se não foram utilizados numerais ou caracteres especiais. O campo em branco já possui tratamento/impedimento pelo próprio Django e DB.
 A segunda função valida o saldo, evitando que se coloque um valor negativo. Foi permitido que o saldo seja zerado na criação da conta (inclusive, é o default caso o valor seja null).
+
 ##### transacao_validator.py  
 ![](arquivos_readme/validator_transacao.png)
+<br>
 Há rês funções de validação. A primeira valida as contas de origem e destino: checa sua existência e evita que se faça uma transação para a mesma conta. Uma melhoria futura seria separar outra função, apenas para checar a existência de uma conta, reduzindo o código.
 A segunda função irá checar o valor da transação, impedindo transações com valores nulos, negativos ou que ultrapassem o saldo da conta de origem.
 A terceira função checa se a data da transação é válida usando um Regex como padrão. Lembrando que o modelo usa valor default para usar a data atual, mas houve uma preferência de permitir que o usuário determine a data da transação para poder criar transações em dias diferentes e testar a API de forma mais ampla.
@@ -142,15 +151,18 @@ A terceira função checa se a data da transação é válida usando um Regex co
 Os testes foram separados em três arquivos, a maioria testando status code em relação a conta, a transação (criar e listar todas) e ao filtro de transação (GET com parâmetros de conta e datas).
 Ao todo foram criadas apenas 14 funções de testes e eles foram feitos posterior ao código fonte. A não utilização do TDD foi por motivos externos (pressa, falta de tempo, doença), que geraram dúvidas se seria possível terminar o projeto. Assim, houve um foco em criar o sistema e suas funcionalidades, deixando validações, tratamento de erros e testes para o final, se sobrasse tempo suficiente.
 Há um padrão nos arquivos de testes que é o uso de fixturing. Houve tanto o uso de um arquivo com dados para alimentar um Database de teste, contendo 3 contas e 9 transações, como a criação de um superuser e uma instância de APIClient para simular o consumo da API.
+
 ![](arquivos_readme/test_padrao.png)
 <br>
 O "db_para_testes" é um arquivo .json que trás os dados dos objetos mencionados. O primeiro teste serve justamente para checar se estes dados foram carregados no DB de teste.
 Estes dados simulados são muito úteis em certos testes, como, por exemplo, quando é necessário testar o filtro de transações (sem filtro; com filtro de conta; com filtro de conta, data inicial e final), como pode ser visto abaixo:
+
 ![](arquivos_readme/test_busca.png)
 
 #### 9. Usando as funcionalidades:
 
 Para a demonstração das funcionalidades requeridas pelo desafio, será utilizado a aplicação Postman. Lembrando que houve uso de autenticação básica (e permissão) para toda a API. Sem informar credenciais válidas, qualquer recurso irá retornar status code 401 (não autorizado).
+
 ![](arquivos_readme/postman_auto.png)
 <br>
 Para a demonstração, criou-se a conta de superuser abaixo, que será utilizada em todos os exemplos abaixo:
