@@ -205,3 +205,10 @@ Há três parâmetros que podem ser usados como filtro: conta, data_inicial e da
 <br>
 
 ![](arquivos_readme/postman_trans_contadata.png)
+<br>
+
+#### 10. Considerações finais:
+Infelizmente o projeto não ficou como eu visualizava. Acabei pegando Covid e ficando acamado durante uma semana, enquanto na seguinte ainda sofria com sintomas persistentes (dores de cabeça, tosse e fadiga). Por tais motivos, optei por criar um projeto simples e bem seco, com receio do pouco tempo para a entrega e sem poder estudar mais a documentação do framework.
+Contudo, ainda fico contente em ter terminado, mesmo sob condições adversas.
+Desde já, agradeço a atenção e oportunidade. 
+Deixo aqui meus agradecimentos à Stone, à HOW e aos colegas do bootcamp.
